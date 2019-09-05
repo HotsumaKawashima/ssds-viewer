@@ -1,0 +1,14 @@
+[
+  { "id" : "file_id_01" , "name" : "file_name_01" , "dataType" : "file_data_type_A" , "date" : "2019-01" , "lastUpdated" : "2019-01-01 00:00:00" },
+  { "id" : "file_id_02" , "name" : "file_name_02" , "dataType" : "file_data_type_A" , "date" : "2019-02" , "lastUpdated" : "2019-02-01 01:00:00" },
+  { "id" : "file_id_03" , "name" : "file_name_03" , "dataType" : "file_data_type_A" , "date" : "2019-03" , "lastUpdated" : "2019-03-01 02:00:00" },
+  { "id" : "file_id_04" , "name" : "file_name_04" , "dataType" : "file_data_type_A" , "date" : "2019-04" , "lastUpdated" : "2019-04-01 03:00:00" },
+  { "id" : "file_id_05" , "name" : "file_name_05" , "dataType" : "file_data_type_A" , "date" : "2019-05" , "lastUpdated" : "2019-05-01 04:00:00" },
+  { "id" : "file_id_06" , "name" : "file_name_06" , "dataType" : "file_data_type_B" , "date" : "2019-06" , "lastUpdated" : "2019-06-01 05:00:00" },
+  { "id" : "file_id_07" , "name" : "file_name_07" , "dataType" : "file_data_type_B" , "date" : "2019-07" , "lastUpdated" : "2019-07-01 06:00:00" },
+  { "id" : "file_id_08" , "name" : "file_name_08" , "dataType" : "file_data_type_B" , "date" : "2019-08" , "lastUpdated" : "2019-08-01 07:00:00" },
+  { "id" : "file_id_09" , "name" : "file_name_09" , "dataType" : "file_data_type_B" , "date" : "2019-09" , "lastUpdated" : "2019-09-01 08:00:00" },
+  { "id" : "file_id_10" , "name" : "file_name_10" , "dataType" : "file_data_type_B" , "date" : "2019-10" , "lastUpdated" : "2019-10-01 09:00:00" },
+  { "id" : "file_id_11" , "name" : "file_name_11" , "dataType" : "file_data_type_B" , "date" : "2019-11" , "lastUpdated" : "2019-11-01 10:00:00" },
+  { "id" : "file_id_12" , "name" : "file_name_12" , "dataType" : "file_data_type_B" , "date" : "2019-12" , "lastUpdated" : "2019-12-01 11:00:00" }
+]
