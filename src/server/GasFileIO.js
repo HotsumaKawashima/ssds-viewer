@@ -1,7 +1,7 @@
 import _ from 'underscore';
 import moment from 'moment';
 
-const SSDS_FOLDER_ID = '1-ZyTeJ3CG5V3uCLU4xb1zDjWHZxaNNL1';
+const SSDS_FOLDER_ID = '10tBjctMuB50AoLwCdbC4hmJ1oXrg4mt1';
 
 export const loadFileList = () => {
   const files = getFiles(SSDS_FOLDER_ID);
