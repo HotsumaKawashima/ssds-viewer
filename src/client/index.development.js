@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from "mobx-react";
 
-import App from './view/App';
+import App from './App';
 
 import { GasFileIOMock } from './controller/GasFileIO';
 import SsdsStore from './controller/SsdsStore';
