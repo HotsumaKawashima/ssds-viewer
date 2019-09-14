@@ -49,11 +49,11 @@ export const importXls = xlsId => {
 
     const newSpreadSheetName = [year, Utilities.formatString('%02u', month), dataType].join('_');
     const newSpreadSheet = SpreadsheetApp.create(newSpreadSheetName);
-    newSpreadSheetFile = DriveApp.getFileById(newSpreadSheet.getId());
     const newSheet = newSpreadSheet.getSheets()[0];
     newSheet.getRange(1, 1, newSheetData.length, newSheetData[0].length).setValues(newSheetData);
 
     spreadSheetFile = DriveApp.getFileById(spreadSheetId)
+    newSpreadSheetFile = DriveApp.getFileById(newSpreadSheet.getId());
     const ssdsFolder = DriveApp.getFolderById(SSDS_FOLDER_ID);
     ssdsFolder.addFile(newSpreadSheetFile);
     return loadFileList();
