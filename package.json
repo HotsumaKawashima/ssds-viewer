@@ -34,10 +34,11 @@
     "mobx": "^5.13.0",
     "mobx-react": "^6.1.1",
     "moment": "^2.24.0",
-    "react": "^16.8.6",
+    "react": "^16.9.0",
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.1",
     "react-select": "^3.0.4",
+    "react-test-renderer": "^16.9.0",
     "recharts": "^1.6.2",
     "underscore": "^1.9.1"
   }
