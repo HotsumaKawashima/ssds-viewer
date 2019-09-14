@@ -9,8 +9,8 @@ describe('パブリック関数', () => {
     const update = new Promise((resolve, reject) => resolve('fileList'));
     mock.loadFileList = jest.fn().mockReturnValueOnce(update);
 
-    const factory = fileList => fileList;
-    const store = new FileListStore(factory, mock);
+    const model = { createModel: fileList => fileList }
+    const store = new FileListStore(model, mock);
 
     store.update().then(() => {
       const fileList = store.getModel();
@@ -24,8 +24,8 @@ describe('パブリック関数', () => {
     const update = new Promise((resolve, reject) => resolve('fileList'));
     mock.deleteFiles = jest.fn().mockReturnValueOnce(update);
 
-    const factory = fileList => fileList;
-    const store = new FileListStore(factory, mock);
+    const model = { createModel: fileList => fileList }
+    const store = new FileListStore(model, mock);
 
     store.deleteFiles('ID01').then(() => {
         const fileList = store.getModel();
@@ -39,8 +39,8 @@ describe('パブリック関数', () => {
     const update = new Promise((resolve, reject) => resolve('fileList'));
     mock.importXls = jest.fn().mockReturnValueOnce(update);
 
-    const factory = fileList => fileList;
-    const store = new FileListStore(factory, mock);
+    const model = { createModel: fileList => fileList }
+    const store = new FileListStore(model, mock);
 
     store.importXls().then(() => {
         const fileList = store.getModel();
@@ -54,11 +54,11 @@ describe('パブリック関数', () => {
 describe('プライベート関数', () => {
 
   test('FileListが更新される', done => {
-    const factory = fileList => fileList;
-    const store = new FileListStore(factory);
+    const model = { createModel: fileList => fileList }
+    const store = new FileListStore(model);
 
     when(
-      () => store.getModel() !== undefined,
+      () => typeof(store.getModel()) === 'string',
       () => {
         const fileList = store.getModel();
         expect(fileList).toBe('fileList');

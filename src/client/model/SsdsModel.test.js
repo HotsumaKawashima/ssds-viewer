@@ -1,4 +1,4 @@
-import SsdsModelFactory, { SsdsModel, _calc } from './SsdsModel';
+import SsdsModel, { _calc } from './SsdsModel';
 
 describe('パブリック関数', () => {
 
@@ -21,7 +21,7 @@ describe('パブリック関数', () => {
         }
     ];
 
-    const ssdsModel = SsdsModelFactory(data);
+    const ssdsModel = new SsdsModel().createModel(data);
     expect(ssdsModel.getValue()).toEqual(result);
   });
 

@@ -1,4 +1,4 @@
-import FileListModelFactory from './FileListModel';
+import FileListModel from './FileListModel';
 
 describe('パブリック関数', () => {
 
@@ -14,7 +14,7 @@ describe('パブリック関数', () => {
       { id: 'id02' },
     ];
 
-    const fileListModel = FileListModelFactory(data);
+    const fileListModel = new FileListModel(data);
     expect(fileListModel.getValue()).toEqual(result);
   });
 
@@ -29,7 +29,7 @@ describe('パブリック関数', () => {
       'id02',
     ];
 
-    const fileListModel = FileListModelFactory(data);
+    const fileListModel = new FileListModel(data);
     expect(fileListModel.getIds()).toEqual(result);
   });
 
@@ -55,7 +55,7 @@ describe('パブリック関数', () => {
       { id: 123 },
     ];
 
-    const fileListModel = FileListModelFactory(data)
+    const fileListModel = new FileListModel(data)
       .sort('id', 'asc');
 
     expect(fileListModel.getValue()).toEqual(result);
