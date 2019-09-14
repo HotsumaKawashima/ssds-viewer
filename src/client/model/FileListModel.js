@@ -1,14 +1,14 @@
 import moment from 'moment';
 import _ from 'underscore';
 
-export default function FileListModelFactory(fileList=[]) {
-  return new FileListModel(fileList);
-}
-
-export class FileListModel {
+export default class FileListModel {
 
   constructor(fileList=[]) {
     this.fileList = fileList;
+  }
+
+  createModel(fileList) {
+    return new FileListModel(fileList);
   }
 
   getValue() {
@@ -30,7 +30,7 @@ export class FileListModel {
       sorted = sorted.reverse();
     }
 
-    return FileListModelFactory(sorted);
+    return new FileListModel(sorted);
   }
 
 }

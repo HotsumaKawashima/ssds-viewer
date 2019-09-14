@@ -1,20 +1,20 @@
 import _ from 'underscore';
 import moment from 'moment';
 
-export default function SsdsModelFactory(ssds=[]) {
-  return new SsdsModel(ssds.map(value => {
-    value['STORE NUMBER'] = Number(value['STORE NUMBER']);
-    value['UNIT SALES'] = Number(value['UNIT SALES']);
-    value['SKU'] = Number(value['SKU']);
-    value['LTR/BTL'] = Number(value['LTR/BTL']);
-    return value;
-  }))
-};
-
-export class SsdsModel {
+export default class SsdsModel {
 
   constructor(ssds=[]) {
     this.ssds = ssds;
+  }
+
+  createModel(ssds) {
+    return new SsdsModel(ssds.map(value => {
+      value['STORE NUMBER'] = Number(value['STORE NUMBER']);
+      value['UNIT SALES'] = Number(value['UNIT SALES']);
+      value['SKU'] = Number(value['SKU']);
+      value['LTR/BTL'] = Number(value['LTR/BTL']);
+      return value;
+    }));
   }
 
   getValue() {

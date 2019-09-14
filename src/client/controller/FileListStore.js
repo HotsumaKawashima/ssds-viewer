@@ -2,10 +2,9 @@ import { observable, decorate } from "mobx"
 
 class FileListStore {
 
-  constructor(fileListModelFactory, gasFileIO) {
-    this.fileListModelFactory = fileListModelFactory;
+  constructor(fileListModel, gasFileIO) {
     this.gasFileIO = gasFileIO;
-    this.fileListModel = this.fileListModelFactory();
+    this.fileListModel = fileListModel;
     this.updateFileList = this.updateFileList.bind(this);
   }
 
@@ -26,7 +25,7 @@ class FileListStore {
   }
 
   updateFileList(fileList) {
-    this.fileListModel = this.fileListModelFactory(fileList);
+    this.fileListModel = this.fileListModel.createModel(fileList);
   }
 }
 

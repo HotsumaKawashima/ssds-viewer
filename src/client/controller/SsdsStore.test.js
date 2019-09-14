@@ -9,8 +9,8 @@ describe('パブリック関数', () => {
     const update = new Promise((resolve, reject) => resolve('ssds'));
     mock.loadSsds = jest.fn().mockReturnValueOnce(update);
 
-    const factory = ssds => ssds;
-    const store = new SsdsStore(factory, mock);
+    const model = { createModel: ssds => ssds }
+    const store = new SsdsStore(model, mock);
 
     store.update().then(() => {
       const ssds = store.getModel();
@@ -24,11 +24,11 @@ describe('パブリック関数', () => {
 describe('プライベート関数', () => {
 
   test('Ssdsが更新される', done => {
-    const factory = ssds => ssds;
-    const store = new SsdsStore(factory);
+    const model = { createModel: ssds => ssds }
+    const store = new SsdsStore(model);
 
     when(
-      () => store.getModel() !== undefined,
+      () => typeof(store.getModel()) === 'string',
       () => {
         const ssds = store.getModel();
         expect(ssds).toBe('ssds');

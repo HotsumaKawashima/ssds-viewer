@@ -2,10 +2,9 @@ import { observable, decorate } from "mobx"
 
 class SsdsStore {
 
-  constructor(ssdsModelFactory, gasFileIO) {
-    this.ssdsModelFactory = ssdsModelFactory;
+  constructor(ssdsModel, gasFileIO) {
     this.gasFileIO = gasFileIO;
-    this.ssdsModel = this.ssdsModelFactory();
+    this.ssdsModel = ssdsModel;
     this.updateSsds = this.updateSsds.bind(this);
   }
 
@@ -18,7 +17,7 @@ class SsdsStore {
   }
 
   updateSsds(ssds) {
-    this.ssdsModel = this.ssdsModelFactory(ssds);
+    this.ssdsModel = this.ssdsModel.createModel(ssds);
   }
 }
 
