@@ -6,9 +6,13 @@ import useRadioSelect from './useRadioSelect';
 describe('パブリック関数', () => {
 
   test('レンダリング', () => {
+    const historyModel = {
+      get: () => 'label01',
+      set: () => {}
+    }
 
     const Component = () => {
-      const [ RadioSelect, state ] = useRadioSelect('label01');
+      const [ RadioSelect, state ] = useRadioSelect(historyModel, 'paramName', 'label01');
 
       return (
         <div>

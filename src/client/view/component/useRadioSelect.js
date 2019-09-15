@@ -1,25 +1,23 @@
-﻿import React, { useState } from 'react';
+﻿import React from 'react';
 import Radio from '@material-ui/core/Radio';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 
-export default (defaultState) => {
-  const [ state, setState ] = useState(defaultState);
-
+export default (historyModel, paramName, defaultValue) => {
+  const state = historyModel.get(paramName, defaultValue)
   return [
-    RadioSelect(state, setState),
-    state,
+    RadioSelect(historyModel, paramName, state),
+    state
   ]
 }
 
-const RadioSelect = (state, setState) => ({ label }) => {
-
+const RadioSelect = (historyModel, paramName, state) => ({ label }) => {
   return (
     <FormControlLabel
       label={ label }
       control={
         <Radio color='primary'
           checked={ label === state }
-          onChange={ ({checked}) => checked ? setState() : setState(label) }
+          onChange={ ({checked}) => checked || historyModel.set(paramName, label) }
         />
       }
     />

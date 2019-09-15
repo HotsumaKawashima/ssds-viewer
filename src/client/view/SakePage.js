@@ -19,15 +19,17 @@ import SakeTable from './component/SakeTable';
 import StoreTable from './component/StoreTable';
 import CityTable from './component/CityTable';
 
-export const SakePage = ({ ssdsStore }) => {
+export const SakePage = ({ ssdsStore, historyModel, history }) => {
 
   useEffect(() => {
     ssdsStore.update();
   }, []);
 
+  historyModel.setHistory(history);
+
   const [ TableSortLabel, sortState ] = useTableSortLabel('BRAND NAME');
-  const [ ChartRadioSelect, chartRadioState ] = useRadioSelect('総売上LineChart');
-  const [ TableRadioSelect, tableRadioState ] = useRadioSelect('日付');
+  const [ ChartRadioSelect, chartRadioState ] = useRadioSelect(historyModel, 'chart-type', '総売上LineChart');
+  const [ TableRadioSelect, tableRadioState ] = useRadioSelect(historyModel, 'table-type', '日付');
   const [ TopDatePulldownMenu, topDateState ] = usePulldownMenu();
   const [ BottomDatePulldownMenu, buttomDateState ] = usePulldownMenu();
   const [ NewStoreDatePulldownMenu, NewStoreDateState ] = usePulldownMenu();
@@ -161,4 +163,4 @@ export const SakePage = ({ ssdsStore }) => {
   )
 }
 
-export default inject('ssdsStore')(observer(SakePage));
+export default inject('ssdsStore', 'historyModel')(observer(SakePage));
