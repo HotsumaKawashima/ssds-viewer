@@ -23,9 +23,10 @@ export default class HistoryModel {
     })
   }
 
-  append(paramName, value) {
+  setAll(paramName, values) {
     const params = new URLSearchParams(this.history.location.search);
-    params.append(paramName, value);
+    params.delete(paramName);
+    values.forEach(v => params.append(paramName, v));
     this.history.push({
       search: params.toString(),
     })
