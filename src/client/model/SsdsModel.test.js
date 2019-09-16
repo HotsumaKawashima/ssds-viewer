@@ -249,27 +249,6 @@ describe('パブリック関数', () => {
     expect(ssdsModel.filterWithNewStores('2019-05').getValue()).toEqual(result);
   });
 
-  test('フィルターをかけたモデルを取得する', () => {
-    const data = [
-      { GROUP1: 123 },
-      { GROUP1: 123 },
-      { GROUP1: 123 },
-      { GROUP1: 124 },
-      { GROUP1: 124 },
-      { GROUP1: 124 },
-      { GROUP1: 124 },
-    ];
-
-    const result = [
-      { GROUP1: 123 },
-      { GROUP1: 123 },
-      { GROUP1: 123 },
-    ];
-
-    const ssdsModel = new SsdsModel(data);
-    expect(ssdsModel.filter({GROUP1: 123}).getValue()).toEqual(result);
-  });
-
   test('Orでフィルターをかけたモデルを取得する', () => {
     const data = [
       { GROUP1: 123 },
@@ -290,7 +269,7 @@ describe('パブリック関数', () => {
     ];
 
     const ssdsModel = new SsdsModel(data);
-    expect(ssdsModel.filterOr('GROUP1', [123, 125]).getValue()).toEqual(result);
+    expect(ssdsModel.filterOr('GROUP1', ['123', 125]).getValue()).toEqual(result);
   });
 
   test('ソートをかけたモデルを取得する', () => {
@@ -350,7 +329,6 @@ describe('パブリック関数', () => {
       { GROUP1: 123, GROUP2: 'b', GROUP3: 'd', 'UNIT SALES': 4  },
       { GROUP1: 123, GROUP2: 'a', GROUP3: 'd', 'UNIT SALES': 5  },
       { GROUP1: 123, GROUP2: 'b', GROUP3: 'c', 'UNIT SALES': 6  },
-      { GROUP1: 124, GROUP2: 'a', GROUP3: 'c', 'UNIT SALES': 7  },
     ];
 
     const result = [
@@ -361,7 +339,6 @@ describe('パブリック関数', () => {
     ];
 
     const ssdsModel = new SsdsModel(data)
-      .filter({ GROUP1: 123 })
       .sumSales(['GROUP2', 'GROUP3'])
       .sort('GROUP2');
 
