@@ -3,22 +3,22 @@ import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 
-export default () => {
-  const [state, setState] = useState('');
+export default (historyModel, paramName) => {
+  const state = historyModel.get(paramName, '');
 
   return [
-    PulldownMenu(state, setState),
+    PulldownMenu(historyModel, paramName, state),
     state
   ]
 }
 
-const PulldownMenu = (state, setState) => ({ options }) => {
+const PulldownMenu = (historyModel, paramName, state) => ({ options }) => {
 
   return (
     <FormControl fullWidth>
       <Select
         value={state}
-        onChange={e => setState(e.target.value)}
+        onChange={e => historyModel.set(paramName, e.target.value)}
       >
         {
           options.map(option => <MenuItem key={option.value} value={option.value}>{option.label}</MenuItem>)

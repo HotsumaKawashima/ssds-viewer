@@ -30,9 +30,9 @@ export const SakePage = ({ ssdsStore, historyModel, history }) => {
   const [ TableSortLabel, sortState ] = useTableSortLabel('BRAND NAME');
   const [ ChartRadioSelect, chartRadioState ] = useRadioSelect(historyModel, 'chart-type', '総売上LineChart');
   const [ TableRadioSelect, tableRadioState ] = useRadioSelect(historyModel, 'table-type', '日付');
-  const [ TopDatePulldownMenu, topDateState ] = usePulldownMenu();
-  const [ BottomDatePulldownMenu, buttomDateState ] = usePulldownMenu();
-  const [ NewStoreDatePulldownMenu, NewStoreDateState ] = usePulldownMenu();
+  const [ TopDatePulldownMenu, topDateState ] = usePulldownMenu(historyModel, 'top-date');
+  const [ BottomDatePulldownMenu, buttomDateState ] = usePulldownMenu(historyModel, 'buttom-date');
+  const [ NewStoreDatePulldownMenu, newStoreDateState ] = usePulldownMenu(historyModel, 'new-store-date');
   const [ SakePulldownMenu, sakeState ] = useMultiPulldownMenu(historyModel, 'sake-filter');
   const [ StorePulldownMenu, storeState ] = useMultiPulldownMenu(historyModel, 'store-filter');
   const [ CityPulldownMenu, cityState ] = useMultiPulldownMenu(historyModel, 'city-filter');
@@ -40,7 +40,7 @@ export const SakePage = ({ ssdsStore, historyModel, history }) => {
 
   const ssdsModel = ssdsStore.getModel();
   const filtered = ssdsModel
-    .filterWithNewStores(NewStoreDateState)
+    .filterWithNewStores(newStoreDateState)
     .filterOr('SKU', sakeState)
     .filterOr('STORE NUMBER', storeState)
     .filterOr('CITY', cityState)

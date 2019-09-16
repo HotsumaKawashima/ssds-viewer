@@ -6,6 +6,10 @@ import usePulldownMenu from './usePulldownMenu';
 describe('パブリック関数', () => {
 
   test('レンダリング', () => {
+    const historyModel = {
+      get: () => 'label01',
+      set: () => {}
+    }
 
     const options = [
       { label: 'label01', value: 'value01' },
@@ -14,7 +18,7 @@ describe('パブリック関数', () => {
     ];
 
     const Component = () => {
-      const [ PulldownMenu, state ] = usePulldownMenu();;
+      const [ PulldownMenu, state ] = usePulldownMenu(historyModel, 'paramName');
 
       return (
         <PulldownMenu width={100} options={ options } />
