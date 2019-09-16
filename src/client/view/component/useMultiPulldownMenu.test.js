@@ -6,6 +6,11 @@ import useMultiPulldownMenu from './useMultiPulldownMenu';
 describe('パブリック関数', () => {
 
   test('レンダリング', () => {
+    const historyModel = {
+      get: () => 'label01',
+      getAll: () => [],
+      setAll: () => {}
+    }
 
     const options = [
       { label: 'label01', value: 'value01' },
@@ -14,7 +19,7 @@ describe('パブリック関数', () => {
     ];
 
     const Component = () => {
-      const [ MultiPulldownMenu, state ] = useMultiPulldownMenu();;
+      const [ MultiPulldownMenu, state ] = useMultiPulldownMenu(historyModel, 'paramName', 'label01');
 
       return (
         <MultiPulldownMenu options={ options } />

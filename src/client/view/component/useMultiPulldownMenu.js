@@ -1,21 +1,19 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Select from 'react-select';
 
-export default () => {
-  const [state, setState] = useState([]);
-
+export default (historyModel, paramName) => {
+  const state = historyModel.getAll(paramName);
   return [
-      MultiPulldownMenu(state, setState),
-      state.map(value => value.value)
+    MultiPulldownMenu(historyModel, paramName, state),
+    state
   ]
 }
 
-const MultiPulldownMenu = (state, setState) => ({ options }) => {
-
+const MultiPulldownMenu = (historyModel, paramName, state) => ({ options }) => {
   return (
     <Select
-      value={state}
-      onChange={targets => targets === null ? setState([]) : setState(targets)}
+      value={state.map(s => options.find(o => o.value == s))}
+      onChange={targets => targets === null ? historyModel.delete(paramName) : historyModel.setAll(paramName ,targets.map(v => v.value))}
       options={options}
       isMulti
     />

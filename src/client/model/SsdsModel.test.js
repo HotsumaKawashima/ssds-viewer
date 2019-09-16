@@ -94,16 +94,16 @@ describe('パブリック関数', () => {
 
   test('storeOptionsを取得する', () => {
     const data = [
-      { 'STORE NAME': 'a' },
-      { 'STORE NAME': 'c' },
-      { 'STORE NAME': 'b' },
-      { 'STORE NAME': 'c' },
+      { 'STORE NAME': 'a', 'STORE NUMBER': 1 },
+      { 'STORE NAME': 'c', 'STORE NUMBER': 2 },
+      { 'STORE NAME': 'b', 'STORE NUMBER': 3 },
+      { 'STORE NAME': 'c', 'STORE NUMBER': 2 },
     ];
 
     const result = [
-      { label: 'a', value: 'a' },
-      { label: 'b', value: 'b' },
-      { label: 'c', value: 'c' },
+      { label: 'a', value: 1 },
+      { label: 'b', value: 3 },
+      { label: 'c', value: 2 },
     ];
 
     const ssdsModel = new SsdsModel(data);

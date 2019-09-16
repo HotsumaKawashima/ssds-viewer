@@ -33,16 +33,16 @@ export const SakePage = ({ ssdsStore, historyModel, history }) => {
   const [ TopDatePulldownMenu, topDateState ] = usePulldownMenu();
   const [ BottomDatePulldownMenu, buttomDateState ] = usePulldownMenu();
   const [ NewStoreDatePulldownMenu, NewStoreDateState ] = usePulldownMenu();
-  const [ SakePulldownMenu, sakeState ] = useMultiPulldownMenu();
-  const [ StorePulldownMenu, storeState ] = useMultiPulldownMenu();
-  const [ CityPulldownMenu, cityState ] = useMultiPulldownMenu();
-  const [ DatePulldownMenu, dateState ] = useMultiPulldownMenu();
+  const [ SakePulldownMenu, sakeState ] = useMultiPulldownMenu(historyModel, 'sake-filter');
+  const [ StorePulldownMenu, storeState ] = useMultiPulldownMenu(historyModel, 'store-filter');
+  const [ CityPulldownMenu, cityState ] = useMultiPulldownMenu(historyModel, 'city-filter');
+  const [ DatePulldownMenu, dateState ] = useMultiPulldownMenu(historyModel, 'date-filter');
 
   const ssdsModel = ssdsStore.getModel();
   const filtered = ssdsModel
     .filterWithNewStores(NewStoreDateState)
     .filterOr('SKU', sakeState)
-    .filterOr('STORE NAME', storeState)
+    .filterOr('STORE NUMBER', storeState)
     .filterOr('CITY', cityState)
     .filterWithDates(topDateState, buttomDateState);
 
