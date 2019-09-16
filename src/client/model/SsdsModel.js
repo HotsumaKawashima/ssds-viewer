@@ -112,15 +112,9 @@ export default class SsdsModel {
     return this.filterOr('STORE NUMBER', stores);
   }
 
-  filter(filter) {
-    filter = _.pick(filter, value => !!value);
-    const filtered = _.filter(this.ssds, _.matcher(filter));
-    return new SsdsModel(filtered);
-  }
-
   filterOr(key, values) {
     if(values.length === 0) return this;
-    const filtered = _.map(values, value => _.filter(this.ssds, data => data[key] === value));
+    const filtered = _.map(values, value => _.filter(this.ssds, data => data[key] == value));
     const union = _.union(...filtered);
     return new SsdsModel(union);
   }
