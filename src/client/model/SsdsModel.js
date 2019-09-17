@@ -58,7 +58,7 @@ export default class SsdsModel {
   getStoreOptions() {
     return _.chain(this.ssds)
       .indexBy('STORE NAME')
-      .map(value => ({ label: value['STORE NAME'], value: value['STORE NAME'] }))
+      .map(value => ({ label: value['STORE NAME'], value: value['STORE NUMBER'] }))
       .sortBy('label')
       .value();
   }

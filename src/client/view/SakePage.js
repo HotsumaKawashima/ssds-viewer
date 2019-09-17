@@ -40,7 +40,7 @@ export const SakePage = ({ ssdsStore }) => {
   const filtered = ssdsModel
     .filterWithNewStores(NewStoreDateState)
     .filterOr('SKU', sakeState)
-    .filterOr('STORE NAME', storeState)
+    .filterOr('STORE NUMBER', storeState)
     .filterOr('CITY', cityState)
     .filterWithDates(topDateState, buttomDateState);
 
