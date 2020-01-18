@@ -44,7 +44,7 @@ export const importXls = xlsId => {
     const sheet = spreadSheet.getSheets()[0];
     const sheetData = sheet.getRange(6, 1, sheet.getLastRow() - 5, sheet.getLastColumn()).getDisplayValues();
     const sheetObjects = array2objects(sheetData);
-    const objects = sheetObjects.map(object => formatSheetObject(object, year, month, dataType));
+    const objects = sheetObjects.map(object => formatSheetObject(object, year, month, dataType)).filter(v => v);
     const newSheetData = objects2array(objects);
 
     const newSpreadSheetName = [year, Utilities.formatString('%02u', month), dataType].join('_');
@@ -118,7 +118,7 @@ const formatSheetObject = (object, year, month, dataType) => {
   if(!_.isEqual(_.keys(object), header)) {
     throw 'インポートされたエクセルファイルにキーが存在しません';
   } else if(!_.every(object, value => value)) {
-    throw 'インポートされたエクセルファイルに値が存在しません';
+    return null;
   };
 
   return object;
